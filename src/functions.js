@@ -24,6 +24,11 @@ let first = (array, n) => {
 // EX: last([1, 2, 3, 4, 5], 2) --> [4, 5]
 // EX: last([10, 34, 68, 19]) --> 19
 let last = (array, n) => {
+  if(typeof n == "undefined")
+      {var output = array[array.length-1]}
+      else
+      {var output = array.slice(-n,array.length)};
+  return output;
 };
 
 // Call iterator(value, key, collection) for each element of collection.
