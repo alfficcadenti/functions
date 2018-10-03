@@ -11,6 +11,11 @@ let identity = (val) => {
 // EX: first([1, 2, 3, 4, 5, 6], 2) --> [1, 2]
 // EX: first([10, 34, 68, 19]) --> 10
 let first = (array, n) => {
+  if(typeof n == "undefined")
+      {var output = array[0]}
+      else
+      {var output = array.slice(0,n)};
+  return output;
 };
 
 // Like first, but for the last elements. If n is undefined, return just the
