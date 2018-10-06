@@ -36,8 +36,25 @@ let last = (array, n) => {
 //
 // each() does not have a return value, but rather simply runs the
 // iterator function over each item in the input collection.
+
 let each = (collection, iterator) => {
+  if(typeof collection == "object")
+    {
+      for (i = 0; i < collection.length; i++) {
+        iterator(collection[i]);
+        }
+    }
 };
+
+
+//function using native method
+let eachNative = (collection, iterator) => {
+  if(typeof collection == "object")
+    {
+    collection.forEach(iterator);
+    }
+};
+
 
 // Returns the index at which value can be found in the array, or -1 if value
 // is not present in the array.
@@ -46,6 +63,16 @@ let each = (collection, iterator) => {
 // EX: indexOf([1, 2, 3], 2) --> 1
 // EX: indexOf([10, 20, 30], 5) --> 0
 let indexOf = (array, target) => {
+  output = -1;
+  for (i = 0; i < array.length; i++) {
+    if(target === array[i])
+      {output = i;}
+    };
+  return output;
+}
+// using native method
+let indexOfNative = (array, target) => {
+    return array.indexOf(target);
 };
 
 // Return all elements of an array that pass a truth test.
