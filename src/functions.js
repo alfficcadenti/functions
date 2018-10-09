@@ -80,8 +80,28 @@ let indexOfNative = (array, target) => {
 // filter([1, 2, 3], (val) => {
 //    val > 2
 // }) --> 3
+
+// I define a "truth test" function that will be invoked by filter:
+
+let test = (variable) => {
+	if(variable>2) {
+	return true;
+  };
+}
+
+
 let filter = (collection, test) => {
-};
+    var filtered = [];
+    each(collection, function(item) {
+      if (test(item)) {
+        filtered.push(item);
+      }
+    });
+    return filtered;
+  };
+
+//test: filter([1, 2, 3], test)
+
 
 // Return all elements of an array that don't pass a truth test.
 //
