@@ -109,6 +109,13 @@ let filter = (collection, test) => {
 //    val < 3
 // }) --> 4, 5
 let reject = (collection, test) => {
+  var filtered = [];
+  each(collection, function(item) {
+    if (!test(item)) {
+      filtered.push(item);
+    }
+  });
+  return filtered;
 };
 
 // Produce a duplicate-free version of the array.
