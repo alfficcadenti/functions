@@ -121,9 +121,15 @@ let reject = (collection, test) => {
 // Produce a duplicate-free version of the array.
 //
 // EX: uniq([1, 1, 2, 2, 3, 4, 5]) --> [1, 2, 3, 4, 5]
-let uniq = (array) => {
-};
 
+let uniq = (array) => {
+  var result=[];
+  each(array, function(item) {
+    if (result.indexOf(item) < 0) {
+      result.push(item);}
+    });
+  return result;
+};
 
 // Return the results of applying an iterator to each element.
 // map() works a lot like each(), but in addition to running the operation on all
