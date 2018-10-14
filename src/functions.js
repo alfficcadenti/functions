@@ -38,20 +38,18 @@ let last = (array, n) => {
 // iterator function over each item in the input collection.
 
 let each = (collection, iterator) => {
-  if(typeof collection == "object")
+  if(typeof collection == "object" && !Array.isArray(collection))
+    {
+      for (key in collection) {
+        iterator(coll[key]);
+        }
+    }
+
+  if(Array.isArray(collection))
     {
       for (i = 0; i < collection.length; i++) {
         iterator(collection[i]);
         }
-    }
-};
-
-
-//function using native method
-let eachNative = (collection, iterator) => {
-  if(typeof collection == "object")
-    {
-    collection.forEach(iterator);
     }
 };
 
@@ -139,7 +137,18 @@ let uniq = (array) => {
 //    return item[key]
 // }) --> ['Kayla', 'Handy', 29]
 let map = (collection, iterator) => {
+  var mapped = [];
+  //object
+  if(typeof collection == "object" && !Array.isArray(collection)){
+    each(collection, function(item) {
+    mapped.push(iterator(item))
+  });
 };
+  return mapped;
+};
+
+// TO BE TESTED
+
 
 // Reduces an array or object to a single value by repetitively calling
 // iterator(accumulator, item) for each item. accumulator should be
