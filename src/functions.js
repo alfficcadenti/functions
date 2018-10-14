@@ -172,12 +172,50 @@ let map = (collection, iterator) => {
 //     return total + number;
 //   }, 0); // should be 6
 let reduce = (collection, iterator, accumulator) => {
-};
+  var start = true;
+
+  if(typeof collection == "object" && !Array.isArray(collection)){
+    each(collection, function(item) {
+        if (start && accumulator === undefined)
+          {accumulator = item;}
+        else
+          {accumulator = iterator(accumulator, item);}
+        start = false;
+      });
+    return accumulator;
+   };
+
+   if(Array.isArray(collection)){
+     each(collection, function(item) {
+        if (start && accumulator === undefined)
+        {accumulator = item;}
+        else {accumulator = iterator(accumulator, item);}
+        start = false;
+     });
+     return accumulator;
+    };
+}
 
 // Determine if the array or object contains a given value (using `===`).
 //
 // contains([1, 2, 3, 4], 3) --> true
 let contains = (collection, target) => {
+  if(typeof collection == "object" && !Array.isArray(collection))
+    {
+      for (key in collection) {
+        if(collection[key]===target)
+          {return true};
+        }
+    }
+
+  if(Array.isArray(collection))
+    {
+      for (i = 0; i < collection.length; i++) {
+        if(collection[i]===target)
+          {return true};
+        }
+    }
+  return false;
 };
 
 
