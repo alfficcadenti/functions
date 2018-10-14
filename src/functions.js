@@ -252,4 +252,17 @@ every([1, 2, 3], (item) => {return item < 10;})
 //    item < 2
 // }) --> true
 let some = (collection, iterator) => {
-};
+  var result = false;
+
+  if(typeof collection == "object"){
+    each(collection, function(item) {
+        if (iterator(item)) {
+          	result = true;
+          	alert(result);
+			return result;
+		}
+    });
+  };
+return result;};
+
+some([1, 2, 3], (item) => {return item < 1}) 
