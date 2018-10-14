@@ -136,18 +136,24 @@ let uniq = (array) => {
 // map({firstName: 'Kayla', lastName: 'Handy', age: 29}, (item) => {
 //    return item[key]
 // }) --> ['Kayla', 'Handy', 29]
+
 let map = (collection, iterator) => {
   var mapped = [];
-  //object
-  if(typeof collection == "object" && !Array.isArray(collection)){
-    each(collection, function(item) {
-    mapped.push(iterator(item))
-  });
-};
+  if(typeof collection == "object" && !Array.isArray(collection))
+    {
+      for (key in collection) {
+        mapped.push(iterator(coll[key]));
+        }
+    }
+
+  if(Array.isArray(collection))
+    {
+      for (i = 0; i < collection.length; i++) {
+        mapped.push(iterator(collection[i]));
+        }
+    }
   return mapped;
 };
-
-// TO BE TESTED
 
 
 // Reduces an array or object to a single value by repetitively calling
