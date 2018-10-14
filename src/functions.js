@@ -225,7 +225,26 @@ let contains = (collection, target) => {
 //    item < 5
 // }) --> true
 let every = (collection, iterator) => {
+  var result = false;
+
+  if(typeof collection == "object"){
+    each(collection, function(item) {
+        if (iterator(item)) {
+        	result = true;
+			//alert(result);
+
+        }
+        else {
+          	result = false;
+          	//alert(result);
+		}
+        return result;
+    });
+  return result;
 };
+return result;};
+
+every([1, 2, 3], (item) => {return item < 10;})
 
 // Determine whether any of the elements pass a truth test.
 //
